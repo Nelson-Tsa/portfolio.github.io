@@ -6,17 +6,14 @@ import { YoutubeIcon } from "./icons/YoutubeIcon";
 import Link from "next/link";
 import { GithubIcon } from "./icons/GithubIcon";
 import { LinkedinIcon } from "./icons/LinkedinIcon";
-
-const Code = ({className, ...props}: ComponentPropsWithoutRef <"span">) => {
-return <span className={cn("bg-accent/30 font-mono border hover:bg-accent/50 transition-colors bg-border px-1 py-0.5 text-primary rounded-sm", className)} {...props}/>
-}
+import { Code } from "./Code";
 
 export const Hero = () => {
     return (
         <Section className="flex max-md:flex-col items-stretch gap-4 justify-between">
             <div className="flex-[3] w-full flex flex-col gap-2 ">
                 <h2 className="text-4xl font-caption text-primary">Nelson Tsamen</h2>
-                <h3 className="text-3xl font-bold">Software Developer</h3>
+                <h3 className="text-3xl font-bold">Developer Full-Stack</h3>
                 <p className="text-base">
 
                 Je me tiens informé des dernières technologies grâce à la chaîne
@@ -39,7 +36,7 @@ export const Hero = () => {
                 <Link href="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/langfr-450px-Flag_of_France.svg.png" target="_blank">
                     <Code><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/langfr-450px-Flag_of_France.svg.png" style={{width: 18 , height: "auto"}} alt="Drapeau de France" className="inline"/> France</Code>
                 </Link>, 
-                je suis actuellement en formation chez Ada Tech School pour devenir 
+                je suis actuellement en formation chez <Link href="https://adatechschool.fr/" target="_blank"><Code><img src="https://cdn.welcometothejungle.co/uploads/website/logo/4277/155112/ada-tech-school.png" style={{width: 18 , height: 10}} alt="Logo Ada Tech School" className="inline"/> Ada Tech School</Code></Link> pour devenir 
                 développeur full-stack. Je suis à la recherche d'une alternance afin de mettre en 
                 pratique mes connaissances et de contribuer activement à des projets innovants.
                 </p>

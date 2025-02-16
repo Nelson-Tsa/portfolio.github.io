@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import animate from "tailwindcss-animate";
 
 export default {
     darkMode: ["class"],
@@ -14,6 +15,19 @@ export default {
   		caption: ["var(--font-caption)"],
   	},
   	extend: {
+      keyframes: {
+        spin: {
+          from: {
+            transform: 'rotate(0deg)'
+          },
+          to: {
+            transform: 'rotate(360deg)'
+          }
+        }
+      },
+      animation: {
+        spin: 'spin 10s linear infinite'
+      },
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
@@ -63,5 +77,6 @@ export default {
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  
+  plugins: [animate],
 } satisfies Config;

@@ -1,8 +1,11 @@
 import { Card } from "@/components/ui/card";
 import {Section} from "./Section";
-import {Home, LucideIcon, Laptop, FolderGit, Rocket, Briefcase, Code, ArrowUpRight, Contact} from "lucide-react"
+import {Home, LucideIcon, Laptop, FolderGit, Brain, Gamepad2, Rocket, Briefcase, Calculator, Clock10, ListTodo, Code, ArrowUpRight, Contact} from "lucide-react"
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
+import { SideProject, SideProjectProps } from "./SideProjectProps";
+import { Work } from "./WorkProps";
+import { ContactCard } from "./ContactCard";
 
 export const Status = () => {
     return (
@@ -13,7 +16,7 @@ export const Status = () => {
                         <Rocket size={16} />
                         <p className="text-lg text-muted-foreground">Side, Fun Projects</p>
                     </div>
-                    <div className="flex flex-col h-full">
+                    <div className="flex flex-col h-full gap-4">
                         {SIDE_PROJECTS.map((project,index) => 
                             <SideProject
                                 key={index}
@@ -21,6 +24,7 @@ export const Status = () => {
                                 title={project.title} 
                                 description={project.description} 
                                 url={project.url} 
+                                freelance={project.freelance}
                             />
                         )}
                     </div>
@@ -52,12 +56,14 @@ export const Status = () => {
                             <p className="text-lg text-muted-foreground">Contact me</p>
                         </div>
                         <ContactCard 
+                        url="https://x.com/nelson_tsa"
                         name="nelson_tsa" 
                         description="1" 
                         image="https://github.com/nelson-Tsa.png" 
                         mediumImage="https://upload.wikimedia.org/wikipedia/commons/e/e6/Twitter-new-logo.jpg"
                         />
                          <ContactCard 
+                        url="https://www.linkedin.com/in/nelson-tsa-4b1b4a1b9/"
                         name="Nelson Tsamen" 
                         description="11" 
                         image="https://github.com/nelson-Tsa.png" 
@@ -71,81 +77,40 @@ export const Status = () => {
 
 const SIDE_PROJECTS=[
     {
-    Logo: Laptop,
-    title: "Portfolio",
-    description: "Site web personnel avec Next.js et Tailwind CSS",
-    url: "https://github.com/nelson-Tsa/Portfolio",
+    Logo: Brain,
+    title: "Quizz",
+    description: "Quizz créer en projet de groupe",
+    url: "",
+    freelance: true,
     },
     {
-        Logo: FolderGit,
-        title: "Projet2",
-        description: "Description du projet 2",
-        url: "https://github.com/nelson-Tsa/Portfolio",
+        Logo: Clock10,
+        title: "Horloge",
+        description: "Horloge avec JavaScript",
+        url: "https://nelson-tsa.github.io/horloge.io/",
     },
     {
-        Logo: FolderGit,
-        title: "Projet2",
-        description: "Description du projet 2",
-        url: "https://github.com/nelson-Tsa/Portfolio",
+        Logo: Calculator,
+        title: "Calculette",
+        description: "Calculette avec JavaScript",
+        url: "https://nelson-tsa.github.io/Calculatrice.io/",
     },
     {
-        Logo: FolderGit,
-        title: "Projet2",
-        description: "Description du projet 2",
-        url: "https://github.com/nelson-Tsa/Portfolio",
+        Logo: ListTodo,
+        title: "Todo List",
+        description: "Todo List avec JavaScript",
+        url: "https://nelson-tsa.github.io/todo-list.io/",
+    },
+    {
+        Logo: Gamepad2,
+        title: "Guess Number",
+        description: "Jeux avec JavaScript",
+        url: "https://nelson-tsa.github.io/devineLeNombre.io/",
     },
 ];
 
-type SideProjectProps = { 
-    Logo: LucideIcon; 
-    title: string; 
-    description: string;
-    url: string;
-};
-
-const ContactCard = (props: {
-    image: string;
-    mediumImage: string;
-    name: string;
-    description: string;
-}) => {
-    return (
-<Card className="p-3 bg-accent/10 hover:bg-accent/30 transition-colors group flex items-center gap-4">
-<div className="relative">
-    <img src={props.image} alt={props.name} className="w-10 h-10 rounded-full object-contain" />
-    <img src={props.mediumImage} alt={props.name} 
-    className="w-4 h-4 absolute -bottom-1 -right-1 rounded-full object-contain" />
-</div>
-    
-    <div className="flex-1 ">
-            <div className="min-w-0 flex items-center gap-2">
-            <p className="text-md font-semibold truncate">{props.name}</p>
-            
-            </div>
-            <p className="text-xs text-muted-foreground flex truncate">{props.description}</p>
-        </div>
-        <div className="flex-shrink-0 ">
-            <ArrowUpRight size={16} className="group-hover:-translate-y-2 group-hover:translate-x-2 transition-transform mr-1" />
-        </div>
-
-</Card>
-    )
-}
 
 
-const SideProject = (props: SideProjectProps) => { 
-return (
-    <Link href={props.url} className="flex items-center gap-4 p-2 rounded transition-colors hover:bg-accent/50" target="_blank">
-        <span className="flex-shrink-0 p-3">
-            <props.Logo size={20} className="text-muted-foreground" />
-        </span>
-        <div className="min-w-0 flex-1">
-            <p className="text-md font-semibold truncate">{props.title}</p>
-            <p className="text-sm text-muted-foreground truncate">{props.description}</p>
-        </div>
-    </Link>
-)
-}
 
 
 const WORK=[
@@ -153,7 +118,7 @@ const WORK=[
     image: "https://adatechschool.fr/app/uploads/2022/05/icn_logo_ada@2x.png",
     title: "Ada Tech School",
     role: "Formation intensive en développement web et mobile",
-    date: "2023 - 2025",
+    date: "2025",
     url: "https://adatechschool.fr/",
     freelance: true,
     },
@@ -166,34 +131,3 @@ const WORK=[
     },
 ];
 
-type WorkProps = { 
-    image: string; 
-    title: string; 
-    role: string;
-    date: string;
-    url: string;
-    freelance?: boolean;
-};
-
-const Work = (props: WorkProps) => { 
-return (
-    <Link href={props.url} className="flex grid grid-cols-[auto_1fr_auto] items-center gap-4 p-2 rounded transition-colors hover:bg-accent/50" target="_blank">
-        <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center">
-            <img src={props.image} 
-                alt={props.title} 
-                className="w-8 h-8 object-contain" 
-            />
-        </div>
-        <div className="flex-1 ">
-            <div className="min-w-0 flex items-center gap-2">
-            <p className="text-md font-semibold truncate">{props.title}</p>
-            {props.freelance && <Badge variant="outline">Actuellement</Badge>}
-            </div>
-            <p className="text-xs text-muted-foreground flex truncate">{props.role}</p>
-        </div>
-        <div className="flex-shrink-0 ">
-            <p className="text-xs text-end text-muted-foreground whitespace-nowrap break-words">{props.date}</p>
-        </div>
-    </Link>
-)
-}
